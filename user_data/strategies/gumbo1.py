@@ -1,37 +1,25 @@
 """
 https://github.com/raph92?tab=repositories
 """
+import logging
+
 # --- Do not remove these libs ---
 import sys
-from datetime import datetime, timedelta
 from functools import reduce
-from numbers import Number
 from pathlib import Path
-from pprint import pprint
-from typing import Optional, Union, Tuple
 
 import freqtrade.vendor.qtpylib.indicators as qtpylib
-import numpy as np
-import pandas as pd
-import pandas_ta
 import talib.abstract as ta
-from finta import TA
 from freqtrade.constants import ListPairsWithTimeframes
-from freqtrade.persistence import Trade
 from freqtrade.strategy import (
     IntParameter,
     DecimalParameter,
     merge_informative_pair,
-    CategoricalParameter,
 )
 from freqtrade.strategy.interface import IStrategy
-from numpy import number
 from pandas import DataFrame
-from pandas_ta import ema
-import logging
 
 sys.path.append(str(Path(__file__).parent))
-import custom_indicators as ci
 
 logger = logging.getLogger(__name__)
 
@@ -68,7 +56,7 @@ class Gumbo1(IStrategy):
             pair=metadata['pair'], timeframe=self.inf_timeframe
         )
         # t3 from custom_indicators
-        informative['T3'] = ci.T3(informative)
+        informative['T3'] = T3(informative)
         # bollinger bands
         bbands = ta.BBANDS(informative, timeperiod=20)
         informative['bb_lowerband'] = bbands['lowerband']
@@ -83,12 +71,12 @@ class Gumbo1(IStrategy):
 
     def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         # ewo
-        dataframe['EWO'] = ci.EWO(dataframe)
+        dataframe['EWO'] = EWO(dataframe)
         # ema
         dataframe['EMA'] = ta.EMA(dataframe)
         # t3
         for i in self.t3_periods.range:
-            dataframe[f'T3_{i}'] = ci.T3(dataframe, i)
+            dataframe[f'T3_{i}'] = T3(dataframe, i)
         # bollinger bands 40
         bbands = ta.BBANDS(dataframe, timeperiod=40)
         dataframe['bb_lowerband_40'] = bbands['lowerband']
@@ -97,7 +85,7 @@ class Gumbo1(IStrategy):
         # stochastic
         # stochastic windows
         for i in self.stock_periods.range:
-            dataframe[f'stoch_{i}'] = ci.stoch_sma(dataframe, window=i)
+            dataframe[f'stoch_{i}'] = stoch_sma(dataframe, window=i)
         dataframe = self.populate_informative_indicators(dataframe, metadata)
         return dataframe
 
@@ -126,3 +114,40 @@ class Gumbo1(IStrategy):
         if conditions:
             dataframe.loc[reduce(lambda x, y: x | y, conditions), 'sell'] = 1
         return dataframe
+
+
+def T3(dataframe, length=5):
+    """
+    T3 Average by HPotter on Tradingview
+    https://www.tradingview.com/script/qzoC9H1I-T3-Average/
+    """
+    df = dataframe.copy()
+
+    df['xe1'] = ta.EMA(df['close'], timeperiod=length)
+    df['xe2'] = ta.EMA(df['xe1'], timeperiod=length)
+    df['xe3'] = ta.EMA(df['xe2'], timeperiod=length)
+    df['xe4'] = ta.EMA(df['xe3'], timeperiod=length)
+    df['xe5'] = ta.EMA(df['xe4'], timeperiod=length)
+    df['xe6'] = ta.EMA(df['xe5'], timeperiod=length)
+    b = 0.7
+    c1 = -b * b * b
+    c2 = 3 * b * b + 3 * b * b * b
+    c3 = -6 * b * b - 3 * b - 3 * b * b * b
+    c4 = 1 + 3 * b + b * b * b + 3 * b * b
+    df['T3Average'] = c1 * df['xe6'] + c2 * df['xe5'] + c3 * df['xe4'] + c4 * df['xe3']
+
+    return df['T3Average']
+
+
+def EWO(dataframe, ema_length=5, ema2_length=35):
+    df = dataframe.copy()
+    ema1 = ta.EMA(df, timeperiod=ema_length)
+    ema2 = ta.EMA(df, timeperiod=ema2_length)
+    emadif = (ema1 - ema2) / df["low"] * 100
+    return emadif
+
+
+def stoch_sma(dataframe: DataFrame, window=80):
+    """"""
+    stoch = qtpylib.stoch(dataframe, window)
+    return qtpylib.sma((stoch['slow_k'] + stoch['slow_d']) / 2, 10)
