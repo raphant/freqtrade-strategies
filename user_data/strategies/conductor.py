@@ -1,4 +1,7 @@
-"""Inspired by EnsembleStrategy from https://github.com/joaorafaelm/freqtrade-heroku/"""
+"""
+Inspired by EnsembleStrategy from https://github.com/joaorafaelm/freqtrade-heroku/
+Created by https://github.com/raph92/
+"""
 
 import concurrent
 import logging
