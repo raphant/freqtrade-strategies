@@ -306,7 +306,7 @@ class ConductorStrategy(IStrategy):
         """
         dataframe['sell_tag'] = ''
         dataframe['sell_strategies'] = ''
-
+        dataframe['exit_tag'] = None
         strategies = STRATEGIES.copy()
         # only populate strategies with open trades
         if self.is_live_or_dry:
@@ -459,89 +459,3 @@ class ConductorStrategy(IStrategy):
 
         state[pair] = 0
         return True
-
-
-# def custom_stop_loss_reached(
-#     self,
-#     current_rate: float,
-#     trade: Trade,
-#     current_time: datetime,
-#     current_profit: float,
-#     force_stoploss: float,
-#     low: float = None,
-#     high: float = None,
-# ) -> SellCheckTuple:
-#     """
-#     Based on current profit of the trade and configured (trailing) stoploss,
-#     decides to sell or not
-#     :param current_profit: current profit as ratio
-#     :param low: Low value of this candle, only set in backtesting
-#     :param high: High value of this candle, only set in backtesting
-#     """
-#     stop_loss_value = force_stoploss if force_stoploss else self.stoploss
-#
-#     # Initiate stoploss with open_rate. Does nothing if stoploss is already set.
-#     trade.adjust_stop_loss(trade.open_rate, stop_loss_value, initial=True)
-#
-#     if self.use_custom_stoploss and trade.stop_loss < (low or current_rate):
-#         stop_loss_value = strategy_safe_wrapper(
-#             self.custom_stoploss, default_retval=None
-#         )(
-#             pair=trade.pair,
-#             trade=trade,
-#             current_time=current_time,
-#             current_rate=current_rate,
-#             current_profit=current_profit,
-#         )
-#         # Sanity check - error cases will return None
-#         if stop_loss_value:
-#             # logger.info(f"{trade.pair} {stop_loss_value=} {current_profit=}")
-#             trade.adjust_stop_loss(current_rate, stop_loss_value)
-#         else:
-#             logger.warning("CustomStoploss function did not return valid stoploss")
-#
-#     if self.trailing_stop and trade.stop_loss < (low or current_rate):
-#         # trailing stoploss handling
-#         sl_offset = self.trailing_stop_positive_offset
-#
-#         # Make sure current_profit is calculated using high for backtesting.
-#         high_profit = current_profit if not high else trade.calc_profit_ratio(high)
-#
-#         # Don't update stoploss if trailing_only_offset_is_reached is true.
-#         if not (self.trailing_only_offset_is_reached and high_profit < sl_offset):
-#             # Specific handling for trailing_stop_positive
-#             if self.trailing_stop_positive is not None and high_profit > sl_offset:
-#                 stop_loss_value = self.trailing_stop_positive
-#                 logger.debug(
-#                     f"{trade.pair} - Using positive stoploss: {stop_loss_value} "
-#                     f"offset: {sl_offset:.4g} profit: {current_profit:.4f}%"
-#                 )
-#
-#             trade.adjust_stop_loss(high or current_rate, stop_loss_value)
-#
-#     # evaluate if the stoploss was hit if stoploss is not on exchange
-#     # in Dry-Run, this handles stoploss logic as well, as the logic will not be different to
-#     # regular stoploss handling.
-#     if (trade.stop_loss >= (low or current_rate)) and (
-#         not self.order_types.get('stoploss_on_exchange') or self.config['dry_run']
-#     ):
-#
-#         sell_type = SellType.STOP_LOSS
-#
-#         # If initial stoploss is not the same as current one then it is trailing.
-#         if trade.initial_stop_loss != trade.stop_loss:
-#             sell_type = SellType.TRAILING_STOP_LOSS
-#             logger.debug(
-#                 f"{trade.pair} - HIT STOP: current price at {(low or current_rate):.6f}, "
-#                 f"stoploss is {trade.stop_loss:.6f}, "
-#                 f"initial stoploss was at {trade.initial_stop_loss:.6f}, "
-#                 f"trade opened at {trade.open_rate:.6f}"
-#             )
-#             logger.debug(
-#                 f"{trade.pair} - Trailing stop saved "
-#                 f"{trade.stop_loss - trade.initial_stop_loss:.6f}"
-#             )
-#
-#         return SellCheckTuple(sell_type=sell_type)
-#
-#     return SellCheckTuple(sell_type=SellType.NONE)
