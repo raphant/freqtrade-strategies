@@ -7,29 +7,21 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, Union, Dict
+from typing import Dict
 
 import pandas as pd
 import rapidjson
 from freqtrade.enums import SellType
-from freqtrade.exchange import timeframe_to_prev_date
 from freqtrade.persistence import Trade
 from freqtrade.resolvers import StrategyResolver
 from freqtrade.strategy import (
     IStrategy,
-    IntParameter,
     DecimalParameter,
     stoploss_from_open,
     CategoricalParameter,
 )
 from freqtrade.strategy.interface import SellCheckTuple
-from pandas import DataFrame
 
-# warnings.filterwarnings(
-#     'ignore',
-#     'CustomStoploss.*',
-# )
-# warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
 
 sys.path.append(str(Path(__file__).parent))
 
@@ -75,20 +67,6 @@ class ConductorStrategy(IStrategy):
 
     # Number of candles the strategy requires before producing valid signals
     startup_candle_count: int = 200
-    # region manigold settings
-    # roi
-    roi_time_interval_scaling = 1.6
-    roi_table_step_size = 5
-    roi_value_step_scaling = 0.9
-    # stoploss
-    stoploss_min_value = -0.02
-    stoploss_max_value = -0.3
-    # trailing
-    trailing_stop_positive_min_value = 0.01
-    trailing_stop_positive_max_value = 0.08
-    trailing_stop_positive_offset_min_value = 0.011
-    trailing_stop_positive_offset_max_value = 0.1
-    # endregion
 
     plot_config = {
         "main_plot": {
@@ -134,10 +112,7 @@ class ConductorStrategy(IStrategy):
     def __init__(self, config: dict) -> None:
         super().__init__(config)
         # self.gui_thread = None
-        if not self.is_live_or_dry:
-            from manigold_spaces import HyperOpt
 
-            self.HyperOpt = HyperOpt
         logger.info(f"Buy strategies: {STRATEGIES}")
 
         if self.is_live_or_dry:
@@ -208,12 +183,6 @@ class ConductorStrategy(IStrategy):
                 except KeyError:
                     pass
             strategy = StrategyResolver.load_strategy(config)
-            # Only handle ROI, Trailing, and stoploss in main strategy
-            strategy.use_custom_stoploss = False
-            strategy.trailing_stop = False
-            strategy.stoploss = -0.99
-            strategy.trailing_only_offset_is_reached = False
-            strategy.process_only_new_candles = self.process_only_new_candles
             self.startup_candle_count = max(
                 self.startup_candle_count, strategy.startup_candle_count
             )
@@ -235,34 +204,21 @@ class ConductorStrategy(IStrategy):
         logger.info("Analyzed everything in %f seconds", time.time() - t1)
         # super().analyze(pairs)
 
-    def advise_all_indicators(self, data: Dict[str, DataFrame]) -> Dict[str, DataFrame]:
-        """only used in backtesting"""
+    def advise_all_indicators(
+        self, data: Dict[str, pd.DataFrame]
+    ) -> Dict[str, pd.DataFrame]:
+        """only used in backtesting/hyperopt"""
         for s in STRATEGIES:
             self.get_strategy(s)
         logger.info("Loaded all strategies")
-
-        # def worker(data_: DataFrame, metadata: dict):
-        #     return {
-        #         'pair': metadata['pair'],
-        #         'data': self.advise_indicators(data_, metadata),
-        #     }
-
         t1 = time.time()
-        # new_data = {}
-        # with ThreadPoolExecutor(max_workers=1) as executor:
-        #     futures = []
-        #     for pair, pair_data in data.items():
-        #         futures.append(
-        #             executor.submit(worker, pair_data.copy(), {'pair': pair})
-        #         )
-        #     for future in concurrent.futures.as_completed(futures):
-        #         result = future.result()
-        #         new_data[result['pair']] = result['data']
         indicators = super().advise_all_indicators(data)
         logger.info("Advise all elapsed: %s", time.time() - t1)
         return indicators
 
-    def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
+    def populate_indicators(
+        self, dataframe: pd.DataFrame, metadata: dict
+    ) -> pd.DataFrame:
         inf_frames: list[pd.DataFrame] = []
 
         for strategy_name in STRATEGIES:
@@ -285,7 +241,9 @@ class ConductorStrategy(IStrategy):
                 dataframe[col] = series
         return dataframe
 
-    def populate_buy_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
+    def populate_buy_trend(
+        self, dataframe: pd.DataFrame, metadata: dict
+    ) -> pd.DataFrame:
         """
         Populates the buy signal for all strategies. Each strategy with a buy signal will be
         added to the buy_tag. Open to constructive criticism!
@@ -302,7 +260,7 @@ class ConductorStrategy(IStrategy):
             # create column for `strategy`
             strategy_dataframe.loc[:, "buy_strategies"] = ""
             # On every candle that a buy signal is found, strategy_name
-            # name will be added to its 'new_buy_tag' column
+            # name will be added to its 'buy_strategies' column
             strategy_dataframe.loc[
                 strategy_dataframe.buy == 1, "buy_strategies"
             ] = strategy_name
@@ -317,7 +275,7 @@ class ConductorStrategy(IStrategy):
                 ).strip(","),
                 axis=1,
             )
-            # # update the original dataframe with the new strategies buy signals
+            # update the original dataframe with the new strategies buy signals
             dataframe.loc[:, "buy_strategies"] = strategy_dataframe["buy_strategies"]
             for k in strategy_dataframe:
                 if k not in dataframe:
@@ -338,7 +296,9 @@ class ConductorStrategy(IStrategy):
         dataframe.loc[dataframe.buy_tag != "", "buy"] = 1
         return dataframe
 
-    def populate_sell_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
+    def populate_sell_trend(
+        self, dataframe: pd.DataFrame, metadata: dict
+    ) -> pd.DataFrame:
         """
         Populates the sell signal for all strategies. This however will not set the sell signal.
         This will only add the strategy name to the `ensemble_sells` column.
@@ -396,7 +356,6 @@ class ConductorStrategy(IStrategy):
             errors="ignore",
         )
         dataframe.loc[dataframe.sell_strategies != '', 'sell'] = 1
-        # noinspection PyComparisonWithNone
         dataframe.loc[
             (dataframe.sell_strategies != '') & dataframe.exit_tag.isna(), 'exit_tag'
         ] = (dataframe.sell_strategies + f'-ss')
