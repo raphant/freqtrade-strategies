@@ -1,0 +1,341 @@
+rsi:
+  func:
+    loc: "tta.RSI"
+    columns: null
+  columns:
+    - "rsi"
+  values:
+    - rsi,buy,int,30,0,50
+    - rsi,sell,int,70,50,100
+  compare:
+    type: "value"
+  type: "mom"
+  inf_timeframes:
+    - "1h"
+  inf_pair:
+    BTC:
+      -
+      - 1h
+rvi:
+  func:
+    loc: "ci.rvi"
+    columns: null
+  columns:
+    - "rvi"
+  values:
+    - rvi,buy,int,60,50,100
+    - rvi,sell,int,40,0,50
+  compare:
+    type: "value"
+  type: "vol"
+  inf_timeframes:
+    - 1h
+    - 1d
+rmi:
+  func:
+    loc: "ci.RMI"
+    columns: null
+  columns:
+    - "rmi"
+  values:
+    - rmi,buy,int,30,0,50
+    - rmi,sell,int,70,50,100
+  compare:
+    type: "value"
+  type: "vol"
+  inf_timeframes:
+    - 1h
+    - 1d
+ewo:
+  func:
+    loc: "ci.EWO"
+    columns: null
+  columns:
+    - "ewo"
+  compare:
+    type: "value"
+  values:
+    - ewo,buy,decimal,0,-2.0,2.0
+    - ewo,sell,decimal,0,-2.0,2.0
+  type: "osc"
+  inf_timeframes:
+    - "1h"
+cci:
+  func:
+    loc: "pta.cci"
+    columns:
+      - "high"
+      - "low"
+      - "close"
+  columns:
+    - "cci"
+  values:
+    - cci,buy,int,100,50,150
+    - cci,sell,int,-100,-150,-50
+  compare:
+    type: "value"
+  type: "trend"
+stoch_sma:
+  func:
+    loc: "ci.stoch_sma"
+    columns: null
+  columns:
+    - "stoch80_sma10"
+  compare:
+    type: "value"
+  values:
+    - stoch80_sma10,buy,int,20,0,50
+    - stoch80_sma10,sell,int,80,60,100
+  type: "osc"
+awesome_oscillator:
+  func:
+    loc: "qta.awesome_oscillator"
+    columns: null
+  columns:
+    - "ao"
+  compare:
+    type: "value"
+  values:
+    - ao,buy,decimal,0,-2.0,2.0
+    - ao,sell,decimal,0,-2.0,2.0
+  type: "osc"
+adx:
+  func:
+    loc: "tta.ADX"
+    columns: null
+  columns:
+    - "adx"
+  values:
+    - adx,buy,int,50,25,100
+    - adx,sell,int,25,0,25
+  compare:
+    type: "value"
+  type: "trend"
+  inf_timeframes:
+    - 1h
+    - 1d
+psar:
+  func:
+    loc: "tta.SAR"
+    columns: ["high", "low"]
+  columns:
+    - "sar"
+  compare:
+    type: "series"
+    values:
+      - "ma"
+      - "ohlc"
+  values:
+    buy: null
+    sell: null
+  buy_op: "crossed_above"
+  sell_op: "crossed_below"
+  type: "trend"
+  inf_timeframes:
+    - 1h
+    - 1d
+
+bb_20:
+  func:
+    loc: "ci.bollinger_bands"
+    columns: null
+  columns:
+    - "bb_lowerband"
+    - "bb_middleband"
+    - "bb_upperband"
+  compare:
+    type: "series"
+    values:
+      - "ma"
+      - "ohlc"
+  type: "vol"
+  inf_timeframes:
+    - 1h
+    - 1d
+bb_40:
+  func:
+    loc: "ci.bollinger_bands"
+    columns: null
+    kwargs:
+      window: 40
+  columns:
+    - "bb_lowerband"
+    - "bb_middleband"
+    - "bb_upperband"
+  column_append: "_40"
+  compare:
+    type: "series"
+    values:
+      - "ma"
+      - "ohlc"
+  values:
+    buy: null
+    sell: null
+  buy_op: "crossed_below"
+  sell_op: "crossed_above"
+  type: "vol"
+
+tema9:
+  func:
+    loc: "tta.TEMA"
+    columns: null
+    kwargs:
+      timeperiod: 9
+  columns:
+    - "TEMA"
+  compare:
+    type: "series"
+    values:
+      - "ma"
+      - "ohlc"
+  values:
+    buy: null
+    sell: null
+  type: "ma"
+  inf_timeframes:
+    - 1h
+    - 1d
+tema100:
+  func:
+    loc: "tta.TEMA"
+    columns: null
+    kwargs:
+      timeperiod: 100
+  columns:
+    - "TEMA"
+  column_append: _100
+  compare:
+    type: "series"
+    values:
+      - "ma"
+      - "ohlc"
+  values:
+    buy: null
+    sell: null
+  type: "ma"
+
+hema:
+  func:
+    loc: "qta.hull_moving_average"
+    columns:
+      - "close"
+  columns:
+    - "hma"
+  compare:
+    type: "series"
+    values:
+      - "ma"
+      - "ohlc"
+  values:
+    buy: null
+    sell: null
+  buy_op: "crossed_below"
+  sell_op: "crossed_above"
+  type: "ma"
+
+ema:
+  func:
+    loc: "tta.EMA"
+    columns: null
+  columns:
+    - "EMA"
+  compare:
+    type: "series"
+    values:
+      - "ma"
+      - "ohlc"
+  values:
+    buy: null
+    sell: null
+  buy_op: "crossed_below"
+  sell_op: "crossed_above"
+  type: "ma"
+
+ema_100:
+  func:
+    loc: "tta.EMA"
+    columns: null
+    kwargs:
+      timeperiod: 100
+  columns:
+    - "EMA"
+  column_append: "_100"
+  compare:
+    type: "series"
+    values:
+      - "ma"
+      - "ohlc"
+  values:
+    buy: null
+    sell: null
+  buy_op: "crossed_below"
+  sell_op: "crossed_above"
+  type: "ma"
+wma:
+  func:
+    loc: "tta.WMA"
+    columns: null
+  columns:
+    - "WMA"
+  compare:
+    type: "series"
+    values:
+      - "ma"
+      - "ohlc"
+  values:
+    buy: null
+    sell: null
+  buy_op: "crossed_below"
+  sell_op: "crossed_above"
+  type: "ma"
+  inf_timeframes:
+    - 1d
+wma_100:
+  func:
+    loc: "tta.WMA"
+    columns: null
+  columns:
+    - "WMA"
+  column_append: "_100"
+  compare:
+    type: "series"
+    values:
+      - "ma"
+      - "ohlc"
+  values:
+    buy: null
+    sell: null
+  buy_op: "crossed_below"
+  sell_op: "crossed_above"
+  type: "ma"
+
+sma_200:
+  func:
+    loc: "tta.SMA"
+    columns: null
+    kwargs:
+      timeperiod: 200
+  columns:
+    - "SMA"
+  column_append: "_200"
+  compare:
+    type: "series"
+    values:
+      - "ma"
+      - "ohlc"
+  buy_op: "crossed_below"
+  sell_op: "crossed_above"
+  type: "ma"
+
+t3:
+  func:
+    loc: "ci.T3"
+    columns: null
+  columns:
+    - "T3Average"
+  compare:
+    type: "series"
+  type: "ma"
+  inf_timeframes:
+    - 1h
+    - 1d
