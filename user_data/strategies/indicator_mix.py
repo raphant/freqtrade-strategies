@@ -1,5 +1,5 @@
 """
-https://kaabar-sofien.medium.com/the-catapult-indicator-innovative-trading-techniques-8910ac962c57
+https://github.com/raph92/freqtrade-strategies/
 """
 # --- Do not remove these libs ---
 import sys

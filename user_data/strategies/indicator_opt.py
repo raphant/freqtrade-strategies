@@ -1,3 +1,6 @@
+"""
+https://github.com/raph92/freqtrade-strategies/
+"""
 import logging
 import operator
 from abc import ABC, abstractmethod
