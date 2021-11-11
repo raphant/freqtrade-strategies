@@ -1,4 +1,4 @@
-Ensemble list: ["NASOSv5","NASOSv4","BigZ04_TSL4","MultiMA_TSL","NASOSv5","Gumbo1"]
+Ensemble list: ["NASOSv5","NASOSv4","BigZ04_TSL4","MultiMA_TSL","Gumbo1"]
 
 =========================================================== BACKTESTING REPORT ==========================================================
 |       Pair |   Buys |   Avg Profit % |   Cum Profit % |   Tot Profit USDT |   Tot Profit % |   Avg Duration |   Win  Draw  Loss  Win% |
