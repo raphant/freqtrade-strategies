@@ -6,7 +6,7 @@ Indicator Mix is my fully automated strategy generator that helps you create str
   * [Indicators](#indicators)
     + [Types of indicators](#types-of-indicators)
     + [Defining Indicators](#defining-indicators)
-  * [indicator_mix](#indicator-mix)
+  * [Hyperopting](#hyperopting)
     + [Hyperoptable Parameters](#hyperoptable-parameters)
     + [Comparison](#comparison)
     + [Comparison Groups](#comparison-groups)
@@ -91,8 +91,8 @@ This will be a list of extra informative timeframes you want to generate indicat
 In our example: with `1h`, an `ewo_1h` indicator will be generated.
 
 For BollingerBands each of the low, middle, and upper bands will have additional `_1h` counterparts. 
-## indicator_mix
-`indicator_mix.py` is what we will pass to the hyperopt command. 
+## Hyperopting
+`IndicatorMix` is found in indicator_mix.py and is what we will pass to the hyperopt command. 
 ### Hyperoptable Parameters
 The following code will automatically generate 
 `CategoricalParameters` for all the indicators in `indicators.yml`, allowing them to be hyperopted:
