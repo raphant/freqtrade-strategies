@@ -16,10 +16,11 @@ Indicator Mix is my fully automated strategy generator that helps you create str
   * [~~Advanced Hyper-optimization~~](#advanced-hyper-optimization)
     + [im_test.py](#im-testpy)
       - [Parameters](#parameters)
+  * [Todo](#todo)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 ## Getting Started
-Make sure you copy all the `.py` and the `indicators.yml` files in this directory to user_data/strategies. FreqTrade 
+Make sure you copy all the `.py` and the `indicators.yml` files in this directory to `user_data/strategies`. FreqTrade 
 will not work with subdirectories so `user_data/strategies/indicatormix` will not work.
 ## Indicators
 ### Types of indicators
@@ -202,8 +203,11 @@ class IMTest(IStrategy):
     ct.update_local_parameters(locals())
     # endregion
 ```
-
 This will create optable parameters such as `rsi__rsi__buy_value` and `stoch_sma__stoch80_sma10__sell_value`.
 You can then hyperopt and thus optimize your strategy.
 
 **Make sure you set the same `n_per_group` that you had in the indicator_mix, otherwise your results may differ.**
+## Todo
+- [ ] Implement n_per_group for comparisons in im_test.py
+- [ ] Add ability to auto-generate different time-periods parameters for indicators
+
