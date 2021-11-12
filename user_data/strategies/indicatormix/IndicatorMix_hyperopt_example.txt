@@ -99,17 +99,6 @@ Result for strategy IndicatorMix
 | Market change          | 0%                  |
 ================================================
 
-2021-11-11 19:21:45,136 - root - INFO - Using cbs.json file: /home/sage/ftworkdir/user_data/strategies/cbs.json
-2021-11-11 19:21:45,190 - indicator_opt - INFO - creating group parameters
-2021-11-11 19:21:45,190 - indicator_opt - INFO - creating group parameters
-2021-11-11 19:21:45,197 - freqtrade.resolvers.iresolver - WARNING - Could not import /home/sage/ftworkdir/user_data/strategies/data_view.py due to 'libtk8.6.so: cannot open shared object file: No such file or directory'
-2021-11-11 19:21:45,219 - freqtrade.resolvers.iresolver - WARNING - Could not import /home/sage/ftworkdir/user_data/strategies/dummy_binh.py due to 'No module named 'custom_util''
-2021-11-11 19:21:45,224 - root - WARNING - This strategy is not finished yet and will not work as expected.
-2021-11-11 19:21:45,224 - indicator_opt - INFO - creating group parameters
-2021-11-11 19:21:45,287 - freqtrade.resolvers.iresolver - WARNING - Could not import /home/sage/ftworkdir/user_data/strategies/test_binh.py due to 'No module named 'custom_util''
-2021-11-11 19:21:45,299 - indicator_opt - INFO - creating group parameters
-2021-11-11 19:21:45,399 - freqtrade.optimize.hyperopt_tools - INFO - Dumping parameters to /home/sage/ftworkdir/user_data/strategies/indicator_mix.json
-
 Epoch details:
 
 *   24/30:     24 trades. 13/10/1 Wins/Draws/Losses. Avg profit   0.99%. Median profit   0.62%. Total profit  25.65503128 USDT (  25.66%). Avg duration 12:55:00 min. Objective: -0.96736
