@@ -1,35 +1,21 @@
 """
 https://github.com/raph92/freqtrade-strategies/
 """
+import logging
+
 # --- Do not remove these libs ---
 import sys
-from datetime import datetime, timedelta
 from functools import reduce
-from numbers import Number
 from pathlib import Path
-from pprint import pprint
-from typing import Optional, Union, Tuple
 
-import freqtrade.vendor.qtpylib.indicators as qtpylib
-import numpy as np
-import pandas as pd
-import pandas_ta
-import talib.abstract as ta
-from finta import TA
 from freqtrade.constants import ListPairsWithTimeframes
-from freqtrade.persistence import Trade
 from freqtrade.strategy import (
-    IntParameter,
-    DecimalParameter,
     merge_informative_pair,
-    CategoricalParameter,
 )
 from freqtrade.strategy.interface import IStrategy
-from numpy import number
 from pandas import DataFrame
-from pandas_ta import ema
-import logging
-from indicator_opt import IndicatorOptHelper, indicators, Comparison, InvalidSeriesError
+
+from indicator_opt import IndicatorOptHelper, indicators
 
 sys.path.append(str(Path(__file__).parent))
 
