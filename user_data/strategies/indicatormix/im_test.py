@@ -78,8 +78,6 @@ sell_params = {
 ct = CombinationTester(buy_params, sell_params)
 iopt = ct.iopt
 
-raise NotImplementedError("This strategy is not finished yet")
-
 
 class IMTest(IStrategy):
     # region Parameters
