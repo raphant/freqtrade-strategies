@@ -11,7 +11,7 @@ With the Conductor Strategy you can utilize the strengths of many different stra
 
 Running multiple low volume, high accuracy strategies brings volume (and value) back to these more patient snipers.
 
-Could this be the solution to our bear market problem? For me, it's starting to feel that way. Check out my live stats below.
+Could this be the solution to our bear market problem? For my use-case, it's starting to feel that way. Check out my live stats below.
 
 ## Instructions
 Simply fill `STRATEGIES = []` in conductor.py with the strategies you want to use
