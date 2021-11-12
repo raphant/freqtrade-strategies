@@ -3,6 +3,7 @@ Indicator Mix is my fully automated strategy generator that helps you create str
 
 ## Table of Contents
 - [Indicator Mix](#indicator-mix)
+  * [Getting Started](#getting-started)
   * [Indicators](#indicators)
     + [Types of indicators](#types-of-indicators)
     + [Defining Indicators](#defining-indicators)
@@ -17,7 +18,9 @@ Indicator Mix is my fully automated strategy generator that helps you create str
       - [Parameters](#parameters)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
+## Getting Started
+Make sure you copy all the `.py` and the `indicators.yml` files in this directory to user_data/strategies. FreqTrade 
+will not work with subdirectories so `user_data/strategies/indicatormix` will not work.
 ## Indicators
 ### Types of indicators
 There are two types of indicators supported at the moment:
