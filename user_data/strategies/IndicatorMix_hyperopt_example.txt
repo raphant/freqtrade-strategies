@@ -1,0 +1,156 @@
+Result for strategy IndicatorMix
+=========================================================== BACKTESTING REPORT ===========================================================
+|       Pair |   Buys |   Avg Profit % |   Cum Profit % |   Tot Profit USDT |   Tot Profit % |    Avg Duration |   Win  Draw  Loss  Win% |
+|------------+--------+----------------+----------------+-------------------+----------------+-----------------+-------------------------|
+|  LABS/USDT |      1 |           8.09 |           8.09 |             9.309 |           9.31 |         0:30:00 |     1     0     0   100 |
+|   SOL/USDT |      2 |           3.28 |           6.57 |             6.829 |           6.83 |         1:08:00 |     2     0     0   100 |
+|  AVAX/USDT |      4 |           1.33 |           5.31 |             6.078 |           6.08 | 1 day, 11:58:00 |     2     2     0   100 |
+|  LUNA/USDT |      5 |           0.48 |           2.40 |             2.621 |           2.62 |         4:12:00 |     2     3     0   100 |
+|   CHR/USDT |      1 |           1.67 |           1.67 |             1.848 |           1.85 |         0:50:00 |     1     0     0   100 |
+|   DOT/USDT |      2 |           0.77 |           1.53 |             1.605 |           1.61 |         2:08:00 |     2     0     0   100 |
+|    QI/USDT |      1 |           1.20 |           1.20 |             1.554 |           1.55 |         1:10:00 |     1     0     0   100 |
+|  WAXP/USDT |      1 |           1.20 |           1.20 |             1.490 |           1.49 |         1:00:00 |     1     0     0   100 |
+|   XLM/USDT |      1 |           0.91 |           0.91 |             1.041 |           1.04 |         3:00:00 |     1     0     0   100 |
+|   ADA/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   XRP/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+| CIRUS/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|  DOGE/USDT |      1 |           0.00 |           0.00 |             0.000 |           0.00 |        13:25:00 |     0     1     0     0 |
+|   VET/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   VRA/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|  COTI/USDT |      2 |           0.00 |           0.00 |             0.000 |           0.00 | 1 day, 18:52:00 |     0     2     0     0 |
+|   DAG/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   EOS/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   LTC/USDT |      1 |           0.00 |           0.00 |             0.000 |           0.00 |         4:45:00 |     0     1     0     0 |
+|   XTZ/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   ZEC/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   QNT/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   HTR/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   TRX/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+| THETA/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|  ALGO/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   KSM/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   GRT/USDT |      1 |           0.00 |           0.00 |             0.000 |           0.00 |         8:05:00 |     0     1     0     0 |
+|  AAVE/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   FTM/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|  XAVA/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|  CAKE/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   SHA/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   ARX/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   BTT/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|  PDEX/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   NWC/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   EWT/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   FIL/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|  IOST/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|  MANA/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+|   UNI/USDT |      0 |           0.00 |           0.00 |             0.000 |           0.00 |            0:00 |     0     0     0     0 |
+| MATIC/USDT |      1 |          -5.12 |          -5.12 |            -6.721 |          -6.72 |        20:10:00 |     0     0     1     0 |
+|      TOTAL |     24 |           0.99 |          23.76 |            25.655 |          25.66 |        12:55:00 |    13    10     1  54.2 |
+========================================================== BUY TAG STATS ===========================================================
+|   TAG |   Buys |   Avg Profit % |   Cum Profit % |   Tot Profit USDT |   Tot Profit % |   Avg Duration |   Win  Draw  Loss  Win% |
+|-------+--------+----------------+----------------+-------------------+----------------+----------------+-------------------------|
+| TOTAL |     24 |           0.99 |          23.76 |            25.655 |          25.66 |       12:55:00 |    13    10     1  54.2 |
+===================================================== SELL REASON STATS =====================================================
+|   Sell Reason |   Sells |   Win  Draws  Loss  Win% |   Avg Profit % |   Cum Profit % |   Tot Profit USDT |   Tot Profit % |
+|---------------+---------+--------------------------+----------------+----------------+-------------------+----------------|
+|           roi |      23 |     13    10     0   100 |           1.26 |          28.88 |            32.376 |          28.88 |
+|    force_sell |       1 |      0     0     1     0 |          -5.12 |          -5.12 |            -6.721 |          -5.12 |
+======================================================== LEFT OPEN TRADES REPORT ========================================================
+|       Pair |   Buys |   Avg Profit % |   Cum Profit % |   Tot Profit USDT |   Tot Profit % |   Avg Duration |   Win  Draw  Loss  Win% |
+|------------+--------+----------------+----------------+-------------------+----------------+----------------+-------------------------|
+| MATIC/USDT |      1 |          -5.12 |          -5.12 |            -6.721 |          -6.72 |       20:10:00 |     0     0     1     0 |
+|      TOTAL |      1 |          -5.12 |          -5.12 |            -6.721 |          -6.72 |       20:10:00 |     0     0     1     0 |
+=============== SUMMARY METRICS ================
+| Metric                 | Value               |
+|------------------------+---------------------|
+| Backtesting from       | 2021-10-22 00:00:00 |
+| Backtesting to         | 2021-11-04 00:00:00 |
+| Max open trades        | 1                   |
+|                        |                     |
+| Total/Daily Avg Trades | 24 / 1.85           |
+| Starting balance       | 100.000 USDT        |
+| Final balance          | 125.655 USDT        |
+| Absolute profit        | 25.655 USDT         |
+| Total profit %         | 25.66%              |
+| Trades per day         | 1.85                |
+| Avg. daily profit %    | 1.97%               |
+| Avg. stake amount      | 113.999 USDT        |
+| Total trade volume     | 2735.987 USDT       |
+|                        |                     |
+| Best Pair              | LABS/USDT 8.09%     |
+| Worst Pair             | MATIC/USDT -5.12%   |
+| Best trade             | LABS/USDT 8.09%     |
+| Worst trade            | MATIC/USDT -5.12%   |
+| Best day               | 9.309 USDT          |
+| Worst day              | -6.721 USDT         |
+| Days win/draw/lose     | 5 / 8 / 1           |
+| Avg. Duration Winners  | 6:42:00             |
+| Avg. Duration Loser    | 20:10:00            |
+| Rejected Buy signals   | 156998              |
+|                        |                     |
+| Min balance            | 105.322 USDT        |
+| Max balance            | 132.376 USDT        |
+| Drawdown               | 5.12%               |
+| Drawdown               | 6.721 USDT          |
+| Drawdown high          | 32.376 USDT         |
+| Drawdown low           | 25.655 USDT         |
+| Drawdown Start         | 2021-11-03 03:45:00 |
+| Drawdown End           | 2021-11-04 00:00:00 |
+| Market change          | 0%                  |
+================================================
+
+2021-11-11 19:21:45,136 - root - INFO - Using cbs.json file: /home/sage/ftworkdir/user_data/strategies/cbs.json
+2021-11-11 19:21:45,190 - indicator_opt - INFO - creating group parameters
+2021-11-11 19:21:45,190 - indicator_opt - INFO - creating group parameters
+2021-11-11 19:21:45,197 - freqtrade.resolvers.iresolver - WARNING - Could not import /home/sage/ftworkdir/user_data/strategies/data_view.py due to 'libtk8.6.so: cannot open shared object file: No such file or directory'
+2021-11-11 19:21:45,219 - freqtrade.resolvers.iresolver - WARNING - Could not import /home/sage/ftworkdir/user_data/strategies/dummy_binh.py due to 'No module named 'custom_util''
+2021-11-11 19:21:45,224 - root - WARNING - This strategy is not finished yet and will not work as expected.
+2021-11-11 19:21:45,224 - indicator_opt - INFO - creating group parameters
+2021-11-11 19:21:45,287 - freqtrade.resolvers.iresolver - WARNING - Could not import /home/sage/ftworkdir/user_data/strategies/test_binh.py due to 'No module named 'custom_util''
+2021-11-11 19:21:45,299 - indicator_opt - INFO - creating group parameters
+2021-11-11 19:21:45,399 - freqtrade.optimize.hyperopt_tools - INFO - Dumping parameters to /home/sage/ftworkdir/user_data/strategies/indicator_mix.json
+
+Epoch details:
+
+*   24/30:     24 trades. 13/10/1 Wins/Draws/Losses. Avg profit   0.99%. Median profit   0.62%. Total profit  25.65503128 USDT (  25.66%). Avg duration 12:55:00 min. Objective: -0.96736
+
+
+    # Buy hyperspace params:
+    buy_params = {
+        "buy_comparison_series_1": "TEMA_1h",
+        "buy_comparison_series_2": "low",
+        "buy_comparison_series_3": "TEMA",
+        "buy_operator_1": "crossed_below",
+        "buy_operator_2": "<",
+        "buy_operator_3": "<",
+        "buy_series_1": "none",
+        "buy_series_2": "sar_1h",
+        "buy_series_3": "bb_upperband_40",
+    }
+
+    # Sell hyperspace params:
+    sell_params = {
+        "sell_comparison_series_1": "bb_upperband_40",
+        "sell_comparison_series_2": "bb_lowerband_1h",
+        "sell_operator_1": "crossed_below",
+        "sell_operator_2": "<=",
+        "sell_series_1": "WMA_1d",
+        "sell_series_2": "bb_upperband_1h",
+    }
+
+    # ROI table:
+    minimal_roi = {
+        "0": 0.206,
+        "18": 0.081,
+        "47": 0.012,
+        "151": 0
+    }
+
+    # Stoploss:
+    stoploss = -0.268
+
+    # Trailing stop:
+    trailing_stop = False  # value loaded from strategy
+    trailing_stop_positive = None  # value loaded from strategy
+    trailing_stop_positive_offset = 0.0  # value loaded from strategy
+    trailing_only_offset_is_reached = False  # value loaded from strategy
