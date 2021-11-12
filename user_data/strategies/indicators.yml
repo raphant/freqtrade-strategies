@@ -14,7 +14,6 @@ rsi:
     - "1h"
   inf_pair:
     BTC:
-      -
       - 1h
 rvi:
   func:

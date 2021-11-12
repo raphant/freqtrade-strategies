@@ -12,7 +12,7 @@ Indicator Mix is my fully automated strategy generator that helps you create str
     + [Comparison Groups](#comparison-groups)
     + [Multiple Comparison Groups](#multiple-comparison-groups)
     + [Applying a strategy](#applying-a-strategy)
-  * [Advanced Hyper-optimization](#advanced-hyper-optimization)
+  * [~~Advanced Hyper-optimization~~](#advanced-hyper-optimization)
     + [im_test.py](#im-testpy)
       - [Parameters](#parameters)
 
@@ -164,6 +164,8 @@ class IndicatorMix(IStrategy)
 ```
 Now you can elect to only opt the buy or sell space to further optimize the strategy.
 ## Advanced Hyper-optimization
+**_`im_test.py` is not finished yet. Disregard this section for now._**
+
 So we've found our strategy. But it's "okay". It is very general because it is using default values. What if we 
 could further optimize our strategy so that it is tailored for our specific set of pairs? 
 

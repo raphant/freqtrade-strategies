@@ -68,6 +68,10 @@ class IndicatorMix(IStrategy):
     ignore_roi_if_buy_signal = True
     startup_candle_count = 200
 
+    # indicator_mix
+    buy_n_per_group = 1
+    sell_n_per_group = 1
+
     def informative_pairs(self) -> ListPairsWithTimeframes:
         pairs = self.dp.current_whitelist()
         # get each timeframe from inf_timeframes
@@ -108,18 +112,22 @@ class IndicatorMix(IStrategy):
             self.buy_comparisons,
             self,
             'buy',
+            n_per_group=self.buy_n_per_group,
         )
         if conditions:
-            dataframe.loc[reduce(lambda x, y: x | y, conditions), 'buy'] = 1
+            if self.buy_n_per_group > 1:
+                dataframe.loc[reduce(lambda x, y: x | y, conditions), 'buy'] = 1
+            else:
+                dataframe.loc[reduce(lambda x, y: x & y, conditions), 'buy'] = 1
         return dataframe
 
     def populate_sell_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         conditions = self.iopt.create_conditions(
-            dataframe,
-            self.sell_comparisons,
-            self,
-            'sell',
+            dataframe, self.sell_comparisons, self, 'sell', self.sell_n_per_group
         )
         if conditions:
-            dataframe.loc[reduce(lambda x, y: x | y, conditions), 'sell'] = 1
+            if self.sell_n_per_group > 1:
+                dataframe.loc[reduce(lambda x, y: x | y, conditions), 'sell'] = 1
+            else:
+                dataframe.loc[reduce(lambda x, y: x & y, conditions), 'sell'] = 1
         return dataframe

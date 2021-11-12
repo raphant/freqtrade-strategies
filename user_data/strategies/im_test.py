@@ -78,6 +78,8 @@ sell_params = {
 ct = CombinationTester(buy_params, sell_params)
 iopt = ct.iopt
 
+raise NotImplementedError("This strategy is not finished yet")
+
 
 class IMTest(IStrategy):
     # region Parameters
@@ -95,6 +97,9 @@ class IMTest(IStrategy):
     sell_profit_only = False
     ignore_roi_if_buy_signal = True
     startup_candle_count = 200
+
+    buy_n_per_group = 1
+    sell_n_per_group = 1
 
     def __init__(self, config: dict) -> None:
         super().__init__(config)
@@ -230,7 +235,7 @@ class IMTestOpt(IStrategy):
 
     def populate_buy_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         # conditions = iopt.create_conditions(dataframe, self.buy_parameters, self, 'buy')
-        conditions = ct.get_conditions(dataframe, self, 'buy')
+        conditions = ct.get_comparisons(dataframe, self, 'buy')
 
         if conditions:
             dataframe.loc[reduce(lambda x, y: x & y, conditions), 'buy'] = 1

@@ -34,7 +34,7 @@ import yaml
 from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
-
+# tta = talib, pta = pandas_ta, qta = qtpylib, fta = finta, ci = custom_indicators.py
 ta_map = {'tta': tta, 'pta': pta, 'qta': qta, 'fta': fta, 'ci': ci}
 op_map = {
     '<': operator.lt,
@@ -809,12 +809,17 @@ class CombinationTester:
     def get_parameter_name(self, series_name):
         return self.parameter_name_map.get(series_name, '')
 
-    def get_conditions(self, dataframe, strategy: IStrategy, bs: str):
-        conditions = []
-        for c in self.sell_comparisons:
+    def get_comparisons(self, dataframe, strategy: IStrategy, bs: str):
+
+        final = []
+        if bs == 'buy':
+            comparisons = self.buy_comparisons
+        else:
+            comparisons = self.sell_comparisons
+        for c in comparisons:
             parameter_name = self.get_parameter_name(c.series1.series_name)
             parameter = getattr(strategy, parameter_name, None)
-            conditions.append(
+            final.append(
                 self.compare(
                     data=dataframe,
                     comparison=c,
@@ -822,7 +827,7 @@ class CombinationTester:
                     optimized_parameter=parameter,
                 )
             )
-        return conditions
+        return comparisons
 
 
 indicators = IndicatorTools.load_indicators()
