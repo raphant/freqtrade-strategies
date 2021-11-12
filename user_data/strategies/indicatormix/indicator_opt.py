@@ -3,6 +3,7 @@ https://github.com/raph92/freqtrade-strategies/
 """
 import logging
 import operator
+import sys
 from abc import ABC, abstractmethod
 from collections import namedtuple
 from collections.abc import Callable
@@ -26,10 +27,9 @@ from freqtrade.strategy.hyper import (
 from pandas import DataFrame
 from pydantic.dataclasses import dataclass
 
-try:
-    import custom_indicators as ci
-except:
-    import lazyft.custom_indicators as ci
+sys.path.append(str(Path(__file__).parent))
+
+import custom_indicators as ci
 import yaml
 from pydantic import BaseModel, Field
 
