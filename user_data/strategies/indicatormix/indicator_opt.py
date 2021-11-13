@@ -1,13 +1,15 @@
 """
 https://github.com/raph92/freqtrade-strategies/
 """
+from __future__ import annotations
+
 import logging
 import operator
 import sys
 from abc import ABC, abstractmethod
 from collections import namedtuple
 from collections.abc import Callable
-from functools import cache, reduce
+from functools import reduce
 from itertools import zip_longest
 from pathlib import Path
 from typing import Optional, Union, Any
@@ -15,7 +17,6 @@ from typing import Optional, Union, Any
 import freqtrade.vendor.qtpylib.indicators as qta
 import pandas_ta as pta
 import talib.abstract as tta
-from diskcache import FanoutCache
 from finta import TA as fta
 from freqtrade.strategy import CategoricalParameter, IntParameter, IStrategy
 from freqtrade.strategy.hyper import (

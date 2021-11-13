@@ -1,7 +1,8 @@
 """
 https://github.com/raph92/freqtrade-strategies/
 """
-# --- Do not remove these libs ---
+from __future__ import annotations
+
 import sys
 from datetime import datetime, timedelta
 from functools import reduce

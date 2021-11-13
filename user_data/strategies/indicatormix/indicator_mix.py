@@ -1,6 +1,8 @@
 """
 https://github.com/raph92/freqtrade-strategies/
 """
+from __future__ import annotations
+
 import logging
 
 # --- Do not remove these libs ---

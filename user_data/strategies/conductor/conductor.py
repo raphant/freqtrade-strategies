@@ -2,7 +2,7 @@
 Inspired by EnsembleStrategy from https://github.com/joaorafaelm/freqtrade-heroku/
 Created by https://github.com/raph92/
 """
-
+from __future__ import annotations
 import concurrent
 import logging
 import sys
