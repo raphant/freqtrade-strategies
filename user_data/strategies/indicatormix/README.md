@@ -1,6 +1,9 @@
 # Indicator Mix
 Indicator Mix is my fully automated strategy generator that helps you create strategies using predefined indicators located in indicators.yml.
-If your are running this from Docker, make sure you have the finta, pandas_ta, and the scikit-optimize libs installed in the container. I've included a [Dockerfile](https://github.com/raph92/freqtrade-strategies/blob/master/user_data/strategies/indicatormix/Dockerfile) that will take care of that. 
+
+If your are running this from Docker, make sure you have the `finta`, `pandas_ta`, and the `scikit-optimize` libraries installed in the container. 
+
+I've included a [Dockerfile](https://github.com/raph92/freqtrade-strategies/blob/master/user_data/strategies/indicatormix/Dockerfile) that will take care of that. 
 
 ## Table of Contents
 - [Indicator Mix](#indicator-mix)
