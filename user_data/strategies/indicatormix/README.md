@@ -286,5 +286,5 @@ then hyperopt and thus optimize your strategy.
 ## Todo
 
 - [ ] Implement n_per_group for comparisons in im_test.py
-- [ ] Add ability to auto-generate different time-periods parameters for indicators
+- [ ] Add ability to auto-generate different time-period parameters for indicators
 
