@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from enum import Enum
 from typing import Callable, Union
 
@@ -274,7 +276,9 @@ class SpecialIndicator(Indicator):
         Return a dict of the compare dict with the keys formatted to the
         format of the columns in the dataframe.
         """
-        return {f'{self.name}__{k}': f'{self.name}__{v}' for k, v in self.compare.items()}
+        return {
+            f'{self.name}__{k}': f'{self.name}__{v}' for k, v in self.compare.items()
+        }
 
 
 class SpecificIndicator(Indicator):

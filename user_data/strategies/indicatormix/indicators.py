@@ -1,4 +1,6 @@
 """all indicators will be defined here"""
+from __future__ import annotations
+
 import sys
 from collections import namedtuple
 from pathlib import Path

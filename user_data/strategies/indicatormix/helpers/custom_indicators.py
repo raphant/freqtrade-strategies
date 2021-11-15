@@ -1,6 +1,8 @@
 """
 Solipsis Custom Indicators and Maths
 """
+from __future__ import annotations
+
 import numpy as np
 import talib.abstract as ta
 import pandas_ta as pta
