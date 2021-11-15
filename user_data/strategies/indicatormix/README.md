@@ -1,7 +1,7 @@
 # Indicator Mix
 
 Indicator Mix is my fully automated strategy generator that helps you create strategies using predefined indicators
-located in indicators.yml.
+located in indicators.py.
 
 If you are running this from Docker, make sure you have the `finta`, `pandas_ta`, and the `scikit-optimize` libraries
 installed in the container.
@@ -146,7 +146,7 @@ The `IndicatorMix` strategy is found in indicator_mix.py and is what we will pas
 ### Hyperoptable Parameters
 
 The following code will automatically generate
-`CategoricalParameters` for all the indicators in `indicators.yml`, allowing them to be hyperopted:
+`CategoricalParameters` for all the indicators in `indicators.py`, allowing them to be hyperopted:
 
 ```python
 class IndicatorMix(IStrategy):
